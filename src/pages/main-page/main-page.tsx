@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async';
-import { Logo, Card } from '../../components';
+import { Logo, OffersList } from '../../components';
+import { Offer } from '../../types/types';
 
 type MainPageProps = {
-  offersCount: number;
+  offers: Offer[];
 }
-function MainPage({ offersCount }: MainPageProps): JSX.Element {
+function MainPage({ offers }: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -13,7 +14,9 @@ function MainPage({ offersCount }: MainPageProps): JSX.Element {
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
-            <Logo active />
+            <div className="header__left">
+              <Logo active />
+            </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
@@ -89,7 +92,7 @@ function MainPage({ offersCount }: MainPageProps): JSX.Element {
                     <use xlinkHref="#icon-arrow-select" />
                   </svg>
                 </span>
-                <ul className="places__options places__options--custom places__options--opened">
+                <ul className="places__options places__options--custom">
                   <li
                     className="places__option places__option--active"
                     tabIndex={0}
@@ -107,13 +110,9 @@ function MainPage({ offersCount }: MainPageProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-              </div>
+
+              <OffersList offers={offers} />
+
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />
