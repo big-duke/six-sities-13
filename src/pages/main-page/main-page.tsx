@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
-import { Logo, OffersList } from '../../components';
-import { Offer } from '../../types/types';
+import { Logo, Map, OffersList } from '../../components';
+import { Offer } from '../../types';
 
 type MainPageProps = {
   offers: Offer[];
@@ -115,7 +115,8 @@ function MainPage({ offers }: MainPageProps): JSX.Element {
 
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              {/* <section className="cities__map map" /> */}
+              <Map center={offers[0].city.location} points={offers.map(({ location }, index) => ({ latitude: location.latitude, longitude: location.longitude, id: index }))} />
             </div>
           </div>
         </div>

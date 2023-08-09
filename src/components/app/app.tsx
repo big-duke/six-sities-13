@@ -4,8 +4,7 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import { FavoritiesPage, LoginPage, MainPage, NotFoundPage, OfferPage } from '../../pages';
 import { ProtectedRoute } from '..';
 import { HelmetProvider } from 'react-helmet-async';
-import { Offer } from '../../types/types';
-
+import { Offer } from '../../types';
 
 type AppProps = {
   offers: Offer[];

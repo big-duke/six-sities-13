@@ -1,5 +1,5 @@
 import { Link, generatePath } from 'react-router-dom';
-import { Offer } from '../../types/types';
+import { Offer } from '../../types';
 import { AppRoute } from '../../const';
 import PlaceRating from '../place-rating/place-rating';
 

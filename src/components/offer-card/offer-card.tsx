@@ -1,12 +1,12 @@
 import { Link, generatePath } from 'react-router-dom';
-import { Offer } from '../../types/types';
+import { Nullable, Offer } from '../../types';
 import { AppRoute } from '../../const';
 import PlaceRating from '../place-rating/place-rating';
 
 
 type OfferCardProps = {
   offer: Offer;
-  setActiveCard: (offer: Offer | null) => void;
+  setActiveCard: (offer: Nullable<Offer>) => void;
 }
 function OfferCard({ offer, setActiveCard }: OfferCardProps) {
   const { isPremium, previewImage, title, price, type, id, rating } = offer;
