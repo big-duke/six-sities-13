@@ -1,4 +1,6 @@
-export const reviews = [
+import { Review } from '../types';
+
+export const reviews:Review[] = [
   {
     'id': '3119405c-e143-4e0a-a56a-468e32021f58',
     'comment': 'This villa is perfect in every way: the view on mountains and waterfalls, the hot tub and the villa itself. The evening here became a great continuation of our journeys over country.',

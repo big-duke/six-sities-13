@@ -10,3 +10,8 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export const Rating = {
+  starCount:5,
+  scaleMax:100
+}
