@@ -12,6 +12,15 @@ export enum AuthorizationStatus {
 }
 
 export const Rating = {
-  starCount:5,
-  scaleMax:100
+  starCount: 5,
+  scaleMax: 100,
+};
+
+export enum City {
+  Paris = 'Paris',
+  Cologne = 'Cologne',
+  Brussels = 'Brussels',
+  Amsterdam = 'Amsterdam',
+  Hamburg = 'Hamburg',
+  Dusseldorf = 'Dusseldorf',
 }

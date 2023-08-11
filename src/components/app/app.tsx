@@ -4,18 +4,13 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import { FavoritiesPage, LoginPage, MainPage, NotFoundPage, OfferPage } from '../../pages';
 import { ProtectedRoute } from '..';
 import { HelmetProvider } from 'react-helmet-async';
-import { Offer } from '../../types';
 
-type AppProps = {
-  offers: Offer[];
-}
-
-function App({ offers }: AppProps): JSX.Element {
+function App(): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={AppRoute.Main} element={<MainPage offers={offers} />} />
+          <Route path={AppRoute.Main} element={<MainPage />} />
           <Route path={AppRoute.Login} element={<LoginPage />} />
           <Route path={AppRoute.Favorites} element={<ProtectedRoute authorizationStatus={AuthorizationStatus.Auth}><FavoritiesPage /></ProtectedRoute>} />
           <Route path={AppRoute.Offer} element={<OfferPage />} />

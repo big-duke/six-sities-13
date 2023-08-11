@@ -8,7 +8,7 @@ export const offers:Offer[] = [
     'price': 490,
     'previewImage': 'https://13.design.pages.academy/static/hotel/12.jpg',
     'city': {
-      'name': 'Amsterdam',
+      'name': 'Paris',
       'location': {
         'latitude': 52.37454,
         'longitude': 4.897976,
