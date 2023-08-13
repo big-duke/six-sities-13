@@ -1,34 +1,31 @@
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import { City } from '../../const';
+import { cities } from '../../const';
+import { useAppDispatch } from '../../hooks';
+import { actions, selectors } from '../../store';
+import { useSelector } from 'react-redux';
 
-type CityListProps = {
-  selectedCity: string;
-  onCityClick: (value: string) => void;
-}
-
-function CityList({ selectedCity, onCityClick }: CityListProps): JSX.Element {
-
+function CityList(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const { name: currentCity } = useSelector(selectors.getCity);
   return (
-    <div className="tabs">
-      <section className="locations container">
-        <ul className="locations__list tabs__list">
-          {Object.values(City).map((city) =>
-            (
-              <li key={city} className="locations__item">
-                <Link onClick={() => onCityClick(city)}
-                  className={cn('locations__item-link tabs__item', { 'tabs__item--active': city === selectedCity })}
-                  to="/"
-                >
-                  <span>{city}</span>
-                </Link>
 
-              </li>
-            )
-          )}
-        </ul>
-      </section>
-    </div>
+    <ul className="locations__list tabs__list">
+      {cities.map((city) =>
+        (
+          <li key={city.name} className="locations__item">
+            <Link onClick={() => dispatch(actions.setCity(city))}
+              className={cn('locations__item-link tabs__item', { 'tabs__item--active': city.name === currentCity })}
+              to="/"
+            >
+              <span>{city.name}</span>
+            </Link>
+
+          </li>
+        )
+      )}
+    </ul>
+
 
   );
 }

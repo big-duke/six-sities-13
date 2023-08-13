@@ -1,31 +1,28 @@
 import { Helmet } from 'react-helmet-async';
-import { CityList, Logo, Map, OffersList } from '../../components';
+import { CityList, CityOffers, Logo } from '../../components';
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { actions, selectors } from '../../store';
 
 import React from 'react';
+import cn from 'classnames';
 
 
 function MainPage(): JSX.Element {
-  const selectedCity = useAppSelector(selectors.cityName);
-  const cityCenter = useAppSelector(selectors.cityCenter);
-  const offers = useAppSelector(selectors.offersByCity);
-  const points = useAppSelector(selectors.pointsByCity);
+
+  const { length: offersCount } = useAppSelector(selectors.getOffersByCity);
+  const { name } = useAppSelector(selectors.getCity);
 
   const dispatch = useAppDispatch();
-  const handleSetCity = (value: string) => dispatch(actions.setCityName(value));
 
-
-  const placeFound = `${offers.length} places to stay in ${selectedCity}`;
 
   React.useEffect(() => {
     dispatch(actions.fetchOffers());
   }, [dispatch]);
   return (
-    <div className="page page--gray page--main">
+    <div className={cn('page page--gray page--main', { 'page__main--index-empty': offersCount === 0 })} >
       <Helmet>
-        <title>6 cities | Main page</title>
+        <title>6 cities | {name}</title>
       </Helmet>
       <header className="header">
         <div className="container">
@@ -59,48 +56,13 @@ function MainPage(): JSX.Element {
       </header>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <CityList selectedCity={selectedCity} onCityClick={handleSetCity} />
-
-        <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placeFound}</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width={7} height={4}>
-                    <use xlinkHref="#icon-arrow-select" />
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom">
-                  <li
-                    className="places__option places__option--active"
-                    tabIndex={0}
-                  >
-                    Popular
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                    Price: low to high
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                    Price: high to low
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                    Top rated first
-                  </li>
-                </ul>
-              </form>
-
-              <OffersList offers={offers} />
-
-            </section>
-            <div className="cities__right-section">
-              {cityCenter && <Map center={cityCenter} points={points} />}
-            </div>
-          </div>
+        <div className="tabs">
+          <section className="locations container">
+            <CityList />
+          </section>
         </div>
+
+        <CityOffers />
       </main>
     </div>
 

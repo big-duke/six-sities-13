@@ -1,3 +1,4 @@
+import { CityName } from '../const';
 import { Offer } from '../types';
 
 export const offers:Offer[] = [
@@ -8,7 +9,7 @@ export const offers:Offer[] = [
     'price': 490,
     'previewImage': 'https://13.design.pages.academy/static/hotel/12.jpg',
     'city': {
-      'name': 'Paris',
+      'name': CityName.Paris,
       'location': {
         'latitude': 52.37454,
         'longitude': 4.897976,
@@ -31,7 +32,7 @@ export const offers:Offer[] = [
     'price': 352,
     'previewImage': 'https://13.design.pages.academy/static/hotel/8.jpg',
     'city': {
-      'name': 'Amsterdam',
+      'name': CityName.Amsterdam,
       'location': {
         'latitude': 52.37454,
         'longitude': 4.897976,
@@ -54,7 +55,7 @@ export const offers:Offer[] = [
     'price': 221,
     'previewImage': 'https://13.design.pages.academy/static/hotel/4.jpg',
     'city': {
-      'name': 'Amsterdam',
+      'name': CityName.Amsterdam,
       'location': {
         'latitude': 52.37454,
         'longitude': 4.897976,
@@ -77,7 +78,7 @@ export const offers:Offer[] = [
     'price': 237,
     'previewImage': 'https://13.design.pages.academy/static/hotel/3.jpg',
     'city': {
-      'name': 'Amsterdam',
+      'name': CityName.Amsterdam,
       'location': {
         'latitude': 52.37454,
         'longitude': 4.897976,

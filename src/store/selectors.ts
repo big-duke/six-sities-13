@@ -1,15 +1,14 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '.';
 
-export const cityName = (state: RootState) => state.cityName;
-export const offers = (state: RootState) => state.offers;
+export const getCity = (state: RootState) => state.city;
+export const getOffers = (state: RootState) => state.offers;
 
-export const offersByCity = createSelector(
-  [cityName, offers],
-  (cityName, offers) => offers.filter((offer) => offer.city.name === cityName)
+export const getOffersByCity = createSelector(
+  [getCity, getOffers],
+  (city, offers) => offers.filter((offer) => offer.city.name === city.name)
 );
-export const pointsByCity = createSelector(offersByCity, (offers) =>
+export const getPointsByCity = createSelector(getOffersByCity, (offers) =>
   offers.map(({ location }, index) => ({
     latitude: location.latitude,
     longitude: location.longitude,
@@ -17,4 +16,3 @@ export const pointsByCity = createSelector(offersByCity, (offers) =>
   }))
 );
 
-export const cityCenter = createSelector(offersByCity, (offers) => offers[0] && offers[0].city.location);

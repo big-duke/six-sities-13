@@ -6,5 +6,7 @@ export { default as CommentForm} from './comment-form/comment-form';
 export { default as Map} from './map/map';
 export { default as Logo} from './logo/logo';
 export { default as CityList} from './city-list/city-list';
+export { default as CityOffers} from './city-offers/city-offers';
 export { default as ProtectedRoute} from './protected-route/protected-route';
+
 
