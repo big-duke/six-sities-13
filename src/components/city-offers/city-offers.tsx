@@ -2,6 +2,7 @@ import { Map, OffersList } from '..';
 import { useAppSelector } from '../../hooks';
 import { selectors } from '../../store';
 import OffersEmpty from '../offers-empty/offers-empty';
+import SortOffers from '../sort-offers/sort-offers';
 
 const CityOffers = () => {
   const city = useAppSelector(selectors.getCity);
@@ -24,7 +25,7 @@ const CityOffers = () => {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{cityTitle}</b>
-          {/* <Sort /> */}
+          <SortOffers />
           <OffersList
             offers={offers}
           />

@@ -5,6 +5,9 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Location, Point } from '../../types';
 import useMap from './useMap';
+import { useAppSelector } from '../../hooks';
+import { selectors } from '../../store';
+import { defaultIcon, hoverIcon } from './const';
 
 
 type MapProps = {
@@ -13,20 +16,21 @@ type MapProps = {
 }
 function Map({ center, points}: MapProps): JSX.Element {
   const mapRef = useRef(null);
-
   const map = useMap(mapRef, center);
+  const hoverPointId = useAppSelector(selectors.getHoverOffer)?.id;
+
   useEffect(() => {
     if (map) {
-      points.forEach(({ latitude, longitude }) => {
+      points.forEach(({ latitude, longitude , id}) => {
         leaflet
           .marker({
             lat: latitude,
             lng: longitude, })
-
+          .setIcon(id === hoverPointId ? hoverIcon : defaultIcon)
           .addTo(map);
       });
     }
-  }, [map, points]);
+  }, [hoverPointId, map, points]);
   return (
     <div
       ref={mapRef}

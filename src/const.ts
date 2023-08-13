@@ -13,10 +13,17 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export const Rating = {
+export const RatingSettings = {
   starCount: 5,
   scaleMax: 100,
 };
+
+export enum SortOption {
+  Popular = 'Popular',
+  PriceFromLowToHigh = 'Price: low to high',
+  PriceFromHighLow = 'Price: high to low',
+  Rating = 'Top rated first',
+}
 
 export enum CityName {
   Paris = 'Paris',

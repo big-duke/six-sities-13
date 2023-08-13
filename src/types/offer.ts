@@ -25,5 +25,5 @@ export type Location = {
 }
 
 export type Point = Omit<Location, 'zoom'> & {
-  id: number;
+  id: string;
 };

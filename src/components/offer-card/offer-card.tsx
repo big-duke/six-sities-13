@@ -6,13 +6,13 @@ import PlaceRating from '../place-rating/place-rating';
 
 type OfferCardProps = {
   offer: Offer;
-  setActiveCard: (offer: Nullable<Offer>) => void;
+  handlHoverOffer: (offer: Nullable<Offer>) => void;
 }
-function OfferCard({ offer, setActiveCard }: OfferCardProps) {
+function OfferCard({ offer, handlHoverOffer}: OfferCardProps) {
   const { isPremium, previewImage, title, price, type, id, rating } = offer;
   const offerUrl = generatePath(AppRoute.Offer, { id });
-  const selectCard = () => setActiveCard(offer);
-  const deselectCard = () => setActiveCard(null);
+  const selectCard = () => handlHoverOffer(offer);
+  const deselectCard = () => handlHoverOffer(null);
 
   return (
     <article className="cities__card place-card"
