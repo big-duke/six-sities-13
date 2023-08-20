@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
-import { CityList, CityOffers, Logo } from '../../components';
+import { CityList, CityOffers, Header } from '../../components';
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { actions, asyncActions, selectors } from '../../store';
+import { asyncActions, selectors } from '../../store';
 
 import React from 'react';
 import cn from 'classnames';
@@ -17,43 +17,15 @@ function MainPage(): JSX.Element {
 
 
   React.useEffect(() => {
-    dispatch(asyncActions.fetchOffersAction());
+    dispatch(asyncActions.fetchOffers());
+    dispatch(asyncActions.checkAuth());
   }, [dispatch]);
   return (
     <div className={cn('page page--gray page--main', { 'page__main--index-empty': offersCount === 0 })} >
       <Helmet>
         <title>6 cities | {name}</title>
       </Helmet>
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <Logo active />
-            </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a
-                    className="header__nav-link header__nav-link--profile"
-                    href="#"
-                  >
-                    <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                    <span className="header__user-name user__name">
-                      Oliver.conner@gmail.com
-                    </span>
-                    <span className="header__favorite-count">3</span>
-                  </a>
-                </li>
-                <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
-                    <span className="header__signout">Sign out</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">

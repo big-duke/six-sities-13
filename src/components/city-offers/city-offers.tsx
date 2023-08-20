@@ -3,13 +3,8 @@ import { useAppSelector } from '../../hooks';
 import { selectors } from '../../store';
 import OffersEmpty from '../offers-empty/offers-empty';
 import SortOffers from '../sort-offers/sort-offers';
-import {Grid} from 'react-loader-spinner';
-const override = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100vh',
-};
+import OffersSpinner from './offers-spinner';
+
 
 const CityOffers = () => {
   const city = useAppSelector(selectors.getCity);
@@ -23,15 +18,7 @@ const CityOffers = () => {
 
   if (loading) {
     return (
-      <Grid
-        height="80"
-        width="80"
-        color="#4481C3"
-        ariaLabel="grid-loading"
-        radius="12.5"
-        wrapperStyle={override}
-        visible
-      />);
+      <OffersSpinner />);
   }
 
   if (!offersCount) {

@@ -1,0 +1,9 @@
+.submit-spinner-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.submit-spinner-wrapper  > div {
+  margin: auto;
+}
+

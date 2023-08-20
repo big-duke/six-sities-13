@@ -1,12 +1,13 @@
 import { Navigate } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
+import { useAuth } from '../../hooks/auth';
 
 type ProtectedRouteProps = {
-  authorizationStatus:AuthorizationStatus;
   children: JSX.Element;
 }
-function ProtectedRoute({authorizationStatus, children}:ProtectedRouteProps):JSX.Element {
-  return authorizationStatus === AuthorizationStatus.Auth ? children : <Navigate to={AppRoute.Login} />;
+function ProtectedRoute({ children }: ProtectedRouteProps): JSX.Element {
+  const { isAuth } = useAuth();
+  return isAuth ? children : <Navigate to={AppRoute.Login} />;
 
 }
 
