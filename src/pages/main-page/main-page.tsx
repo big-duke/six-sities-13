@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { CityList, CityOffers, Logo } from '../../components';
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { actions, selectors } from '../../store';
+import { actions, asyncActions, selectors } from '../../store';
 
 import React from 'react';
 import cn from 'classnames';
@@ -17,7 +17,7 @@ function MainPage(): JSX.Element {
 
 
   React.useEffect(() => {
-    dispatch(actions.fetchOffers());
+    dispatch(asyncActions.fetchOffersAction());
   }, [dispatch]);
   return (
     <div className={cn('page page--gray page--main', { 'page__main--index-empty': offersCount === 0 })} >

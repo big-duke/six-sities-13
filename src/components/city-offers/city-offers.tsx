@@ -3,15 +3,36 @@ import { useAppSelector } from '../../hooks';
 import { selectors } from '../../store';
 import OffersEmpty from '../offers-empty/offers-empty';
 import SortOffers from '../sort-offers/sort-offers';
+import {Grid} from 'react-loader-spinner';
+const override = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100vh',
+};
 
 const CityOffers = () => {
   const city = useAppSelector(selectors.getCity);
   const offers = useAppSelector(selectors.getOffersByCity);
   const points = useAppSelector(selectors.getPointsByCity);
+  const loading = useAppSelector(selectors.getLoadingStatus);
 
   const offersCount = offers.length;
 
   const cityTitle = `${offersCount} places to stay in ${city.name}`;
+
+  if (loading) {
+    return (
+      <Grid
+        height="80"
+        width="80"
+        color="#4481C3"
+        ariaLabel="grid-loading"
+        radius="12.5"
+        wrapperStyle={override}
+        visible
+      />);
+  }
 
   if (!offersCount) {
     return (
