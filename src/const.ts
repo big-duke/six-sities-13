@@ -5,9 +5,12 @@ export enum AppRoute {
   Login = '/login',
   Favorites = '/favorites',
   Offer = '/offer/:id',
+  HTTP404='/page-not-found',
+  HTTP500='/out-of-service'
 }
 export enum APIRoute {
   Offers = '/offers',
+  Offer = '/offers/:id',
   Login = '/login',
   Logout = '/logout',
   Comments = '/comments',

@@ -4,18 +4,16 @@ import { asyncActions, selectors } from '../../store';
 import { Auth } from '../../types';
 import { useAuth } from '../../hooks/auth';
 
-
 type LoginController = {
-  isAuth:boolean;
-  isAuthLoading:boolean;
-  handleLogin:(e:FormEvent<HTMLFormElement>) =>void;
-}
+  isAuth: boolean;
+  isAuthLoading: boolean;
+  handleLogin: (e: FormEvent<HTMLFormElement>) => void;
+};
 
-export const useLogin = ():LoginController => {
+export const useLogin = (): LoginController => {
   const dispatch = useAppDispatch();
   const { isAuth } = useAuth();
   const isAuthLoading = useAppSelector(selectors.getAuthLoading);
-
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -24,5 +22,5 @@ export const useLogin = ():LoginController => {
     dispatch(asyncActions.login(data));
   };
 
-  return {isAuth, isAuthLoading, handleLogin};
+  return { isAuth, isAuthLoading, handleLogin };
 };

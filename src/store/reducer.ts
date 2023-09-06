@@ -9,42 +9,55 @@ import {
   logout
 } from './actions';
 import { AuthStatus, SortOption, cities } from '../const';
-import { fetchOffers, checkAuth, login } from './api-actions';
+import { fetchOffers, fetchOffer, checkAuth, login } from './api-actions';
+import { OfferDetail } from '../types/offer';
 
 type AppState = {
   city: City;
   offers: Offer[];
   sortOption: SortOption;
   hoverOffer: Nullable<Offer>;
-  loading: boolean;
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
   authStatus: AuthStatus;
   user: Nullable<User>;
   isAuthLoading:boolean;
+  offerDetail: Nullable<OfferDetail>;
 };
 
 const initialState: AppState = {
+  authStatus: AuthStatus.Unknown,
   city: cities[0],
+  hoverOffer: null,
+  isAuthLoading:false,
+  status: 'idle',
+  offerDetail: null,
   offers: [],
   sortOption: SortOption.Popular,
-  hoverOffer: null,
-  loading: false,
-  authStatus: AuthStatus.Unknown,
   user: null,
-  isAuthLoading:false,
 
 };
 
 export const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(fetchOffers.fulfilled, (state, action) => {
-      state.loading = false;
+      state.status = 'succeeded';
       state.offers = action.payload;
     })
     .addCase(fetchOffers.pending, (state) => {
-      state.loading = true;
+      state.status = 'loading'
     })
     .addCase(fetchOffers.rejected, (state) => {
-      state.loading = false;
+      state.status = 'failed';
+    })
+    .addCase(fetchOffer.fulfilled, (state, action) => {
+      state.status = 'succeeded';
+      state.offerDetail = action.payload;
+    })
+    .addCase(fetchOffer.pending, (state) => {
+      state.status = 'loading';
+    })
+    .addCase(fetchOffer.rejected, (state) => {
+      state.status = 'failed';
     })
     .addCase(checkAuth.fulfilled, (state, action) => {
       state.authStatus = AuthStatus.Auth;

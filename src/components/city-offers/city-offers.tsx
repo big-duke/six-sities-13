@@ -16,7 +16,8 @@ const CityOffers = () => {
 
   const cityTitle = `${offersCount} places to stay in ${city.name}`;
 
-  if (loading) {
+
+  if (loading === 'loading') {
     return (
       <OffersSpinner />);
   }

@@ -9,5 +9,8 @@ export { default as Header} from './header/header';
 export { default as CityList} from './city-list/city-list';
 export { default as CityOffers} from './city-offers/city-offers';
 export { default as ProtectedRoute} from './protected-route/protected-route';
+export { default as HistoryRouter} from './history-route/history-route';
+export { default as OfferImageList} from './offer-image-list/offer-image-list';
+export { default as OfferRating} from './offer-rating/offer-rating';
 
 

@@ -1,12 +1,11 @@
-import { Link } from 'react-router-dom';
-import { CityList, Header } from '../../components';
+import { Header } from '../../components';
 import { Helmet } from 'react-helmet-async';
 
-function NotFoundPage(){
+function OutOfService(){
   return (
     <div className="page page--gray page--main">
       <Helmet>
-        <title>6 Cities | Page not found</title>
+        <title>6 Cities | Server error</title>
       </Helmet>
       <Header />
       <main className="page__main page__main--index page__main--index-empty">
@@ -15,11 +14,9 @@ function NotFoundPage(){
           <div className="cities__places-container cities__places-container--empty container">
             <section className="cities__no-places">
               <div className="cities__status-wrapper tabs__content">
-                <h1>Ошибка 404</h1>
-                <h2>Запрашиваемый ресурс не найден</h2>
-                <h4>
-                  <Link to='/'>На главную страницу</Link>
-                </h4>
+                <h1>HTTP 500</h1>
+                <h2>Ошибка сервера</h2>
+                <p className="cities__status-description">Что-то пошло не так. Мы уже разбираемся что случилось.</p>
               </div>
             </section>
             <div className="cities__right-section" />
@@ -31,4 +28,4 @@ function NotFoundPage(){
   );
 }
 
-export default NotFoundPage;
+export default OutOfService;
