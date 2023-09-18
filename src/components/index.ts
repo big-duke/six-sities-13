@@ -11,6 +11,6 @@ export { default as CityOffers} from './city-offers/city-offers';
 export { default as ProtectedRoute} from './protected-route/protected-route';
 export { default as HistoryRouter} from './history-route/history-route';
 export { default as OfferImageList} from './offer-image-list/offer-image-list';
-export { default as OfferRating} from './offer-rating/offer-rating';
-
-
+export { default as StarRating} from './star-rating/star-rating';
+export { default as OfferFeatures} from './offer-features/offer-features';
+export { default as OfferInsideList} from './offer-inside-list/offer-inside-list'

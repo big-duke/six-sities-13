@@ -1,7 +1,7 @@
 import { Link, generatePath } from 'react-router-dom';
 import { Nullable, Offer } from '../../types';
 import { AppRoute } from '../../const';
-import PlaceRating from '../place-rating/place-rating';
+import StarRating from '../star-rating/star-rating';
 
 
 type OfferCardProps = {
@@ -56,7 +56,7 @@ function OfferCard({ offer, handlHoverOffer}: OfferCardProps) {
             <span className="visually-hidden">To bookmarks</span>
           </button>
         </div>
-        <PlaceRating rating={rating} />
+        <StarRating rating={rating} variant='place-rating' />
         <h2 className="place-card__name">
           <Link to={offerUrl}>
             {title}

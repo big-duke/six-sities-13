@@ -1,7 +1,7 @@
 import { Link, generatePath } from 'react-router-dom';
 import { Offer } from '../../types';
 import { AppRoute } from '../../const';
-import PlaceRating from '../place-rating/place-rating';
+import StarRating from '../star-rating/star-rating';
 
 type FavoritesOfferProps = {
   offer: Offer;
@@ -35,7 +35,7 @@ function FavoritesOffer({ offer }: FavoritesOfferProps): JSX.Element {
             <span className="visually-hidden">In bookmarks</span>
           </button>
         </div>
-        <PlaceRating rating={rating} />
+        <StarRating rating={rating} />
         <h2 className="place-card__name">
           <Link to={offerUrl}>{title}</Link>
         </h2>
